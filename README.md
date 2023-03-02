@@ -1,2 +1,3 @@
-# goit-react-hw-02-phonebook
-react-homework-2 (phonebook)
+# goit-react-hw-04-phonebook
+
+react-homework-4 (phonebook)
