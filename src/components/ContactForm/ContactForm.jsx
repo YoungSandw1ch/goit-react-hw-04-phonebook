@@ -11,7 +11,7 @@ export const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+    onSubmit(name, number);
     resetState();
   };
 
@@ -19,7 +19,6 @@ export const ContactForm = ({ onSubmit }) => {
     const { name, value } = e.target;
     if (name === 'name') setName(value);
     if (name === 'number') setNumber(value);
-    // setState(prev => ({ ...prev, [name]: value }));
   };
 
   const resetState = () => {
