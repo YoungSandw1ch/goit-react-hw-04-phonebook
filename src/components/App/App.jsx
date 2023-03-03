@@ -12,22 +12,10 @@ import { report } from 'utils';
 const LS_CONTACTS = 'ls_contacts';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem(LS_CONTACTS)) || initialState
+  );
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    try {
-      const contacts = JSON.parse(localStorage.getItem(LS_CONTACTS));
-      //добавляю контакти в state спочатку зі змінної для ментора для зручності перевірки
-      if (!contacts) {
-        setContacts(initialState);
-      } else {
-        setContacts(contacts);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
 
   useEffect(() => {
     try {
@@ -47,7 +35,7 @@ export const App = () => {
       );
       if (isContactExist) {
         report();
-        return;
+        return prevContacts;
       }
       return [...prevContacts, { id, name, number }];
     });
