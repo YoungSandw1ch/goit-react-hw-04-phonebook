@@ -44,14 +44,14 @@ export const App = () => {
   const deleteContact = id =>
     setContacts(contacts => contacts.filter(contact => contact.id !== id));
 
-  const filterContacts = (contacts, filter) => {
+  const filterContacts = () => {
     const normalizedText = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedText)
     );
   };
 
-  const filteredContact = filterContacts(contacts, filter);
+  const filteredContact = filterContacts();
 
   return (
     <Container>
