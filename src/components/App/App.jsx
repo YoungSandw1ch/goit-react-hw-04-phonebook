@@ -45,6 +45,7 @@ export const App = () => {
     setContacts(contacts => contacts.filter(contact => contact.id !== id));
 
   const filterContacts = () => {
+    if (!filter) return null; //вирішує проблему постійної фільрації
     const normalizedText = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedText)
@@ -65,7 +66,7 @@ export const App = () => {
         </Title>
         <Filter onFilter={setFilter} value={filter} />
         <ContactList
-          contacts={filteredContact}
+          contacts={filteredContact ?? contacts} //вирішує проблему постійної фільрації
           onContactDelete={deleteContact}
         />
       </Wrapper>
